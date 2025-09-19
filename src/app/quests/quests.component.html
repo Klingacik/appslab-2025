@@ -1,0 +1,7 @@
+<mat-list role="list">
+  @for (quest of quests; track quest.id; let i = $index) {
+    <app-quest-item [quest]="quest" [questIndex]="i" (onRemoveQuest)="removeQuest($event)"></app-quest-item>
+  }
+</mat-list>
+
+<button (click)="addQuest()" matButton="elevated">Add new quest</button>
