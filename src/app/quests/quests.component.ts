@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { Quest } from './quest';
-import { MatListModule } from '@angular/material/list';
 import {QuestItemComponent} from './quest-item/quest-item.component';
+import {QuestsService} from './quests.service';
 import {MatButton} from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
 
 @Component({
   selector: 'app-quests',
@@ -11,18 +12,18 @@ import {MatButton} from '@angular/material/button';
   styleUrl: './quests.component.css'
 })
 export class QuestsComponent {
-  quests: Quest[] = [
-    { id: 1, title: 'Find the Lost Sword', description: 'Retrieve the legendary sword from the ancient ruins.', xp: 150 },
-    { id: 2, title: 'Rescue the Village', description: 'Help the villagers fend off the bandit attack.', xp: 25 },
-    { id: 3, title: 'Collect Rare Herbs', description: 'Gather rare herbs for the village healer.', xp: 75}
-  ];
+  private questsService = inject(QuestsService);
+
+  quests = signal<Quest[]>(this.questsService.getQuests());
+  count = computed(() => this.quests().length);
 
   addQuest() {
-    const newQuest: Quest = { id: this.quests.length + 1, title: 'New Quest', description: 'A newly added quest.', xp: 75 };
-    this.quests.push(newQuest);
+    const maxId = this.quests().length ? Math.max(...this.quests().map(q => q.id)) : 0;
+    const newQuest: Quest = { id: maxId + 1, title: 'New Quest', description: 'A newly added quest.', xp: 75 };
+    this.quests.update(quests => [...quests, newQuest]);
   }
 
   removeQuest(questId: number) {
-    this.quests.splice(this.quests.findIndex(q => q.id === questId), 1);
+    this.quests.update(quests => quests.filter(q => q.id !== questId));
   }
 }
