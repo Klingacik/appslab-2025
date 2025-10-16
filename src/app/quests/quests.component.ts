@@ -14,6 +14,7 @@ import {MatListModule} from '@angular/material/list';
 export class QuestsComponent {
   private questsService = inject(QuestsService);
 
+  questCountLabel = 'Quests count';
   quests = signal<Quest[]>(this.questsService.getQuests());
   count = computed(() => this.quests().length);
 
