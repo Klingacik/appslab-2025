@@ -1,10 +1,10 @@
-<mat-list-item>
+<mat-list-item [routerLink]="['/quests', quest().id]">
   <div matListItemTitle>{{ questIndex()+1 }}.{{ quest().title }}
     @if (quest().xp > 50 && quest().xp <= 100) {
       <span matBadge="SUPER XP!" matBadgeOverlap="false"></span>
-    } @else if (quest().xp > 100) {
+      } @else if (quest().xp > 100) {
       <span matBadge="MEGA XP!" matBadgeOverlap="false"></span>
-    }
+      }
   </div>
   <span matListItemLine>
     {{ quest().description }}

@@ -4,6 +4,7 @@ import {MatBadge} from '@angular/material/badge';
 import {MatListItem, MatListItemLine, MatListItemTitle} from '@angular/material/list';
 import {MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-quest-item',
@@ -15,7 +16,8 @@ import {MatIcon} from '@angular/material/icon';
     MatListItemTitle,
     MatIcon,
     MatIconButton,
-    MatIcon
+    MatIcon,
+    RouterLink
   ],
   templateUrl: './quest-item.component.html',
   styleUrl: './quest-item.component.css'
