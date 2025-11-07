@@ -1,11 +1,9 @@
 import {Component, computed, signal} from '@angular/core';
-import {QuestsComponent} from './quests/quests.component';
-import {MatButton} from '@angular/material/button';
 import {RouterLink, RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [QuestsComponent, MatButton, RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
