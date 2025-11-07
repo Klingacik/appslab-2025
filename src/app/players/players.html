@@ -1,1 +1,6 @@
-<p>players works!</p>
+<h3>List of players</h3>
+<mat-list role="list">
+    @for (player of playersSignal(); track player.id; let i = $index) {
+        <app-player-item [player]="player"></app-player-item>
+    }
+</mat-list>
