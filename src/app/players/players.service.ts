@@ -7,8 +7,8 @@ import { Player } from './player';
 export class PlayersService {
 
   private players:Player[] = [
-    { id: 1, nickname: 'Klingacik', xp: 500 },
-    { id: 2, nickname: 'SideEffectss', xp: 200 },
+    { id: 1, nickname: 'Klingacik', xp: 500, quests: [] },
+    { id: 2, nickname: 'SideEffectss', xp: 200, quests: []},
   ];
 
   getPlayers(): Player[] {
