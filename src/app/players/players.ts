@@ -20,15 +20,12 @@ export class Players {
   constructor(){
     this.assignQuestToPlayersRandom();
   }
-  
-  assignQuestToPlayersRandom(): void {
-    let quests = this.questsService.getQuests();
-    
-    for (let index = 0; index < this.playersSignal().length; index++) {
-      const player = this.playersSignal()[index];
 
-      let rndQuestIndex = Math.random()*quests.length;
-      player.quests[0] = quests[rndQuestIndex];
-    }
+  private assignQuestToPlayersRandom(): void {
+    let quests = this.questsService.getQuests();
+    this.playersSignal.update(players => players.map(p => {
+      const randomIndex = Math.floor(Math.random() * quests.length);
+      return {...p, quests: [quests[randomIndex]]};
+    }));
   }
 }

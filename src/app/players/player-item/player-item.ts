@@ -1,10 +1,10 @@
 import { Component, input } from '@angular/core';
 import { Player } from '../player';
-import { MatListItem } from "@angular/material/list";
+import {MatListItem, MatListItemTitle} from "@angular/material/list";
 
 @Component({
   selector: 'app-player-item',
-  imports: [MatListItem],
+  imports: [MatListItem, MatListItemTitle],
   templateUrl: './player-item.html',
   styleUrl: './player-item.css'
 })
