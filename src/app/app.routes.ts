@@ -3,6 +3,7 @@ import {QuestsComponent} from './quests/quests.component';
 import {Home} from './home/home';
 import { QuestDetail } from './quest-detail/quest-detail.component';
 import { Players } from './players/players';
+import { PlayerDetail } from './player-detail/player-detail';
 
 export const routes: Routes = [
   {
@@ -20,5 +21,9 @@ export const routes: Routes = [
   {
     path: 'players',
     component: Players
+  },
+  {
+    path: 'players/:id',
+    component: PlayerDetail
   }
 ];

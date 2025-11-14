@@ -19,6 +19,10 @@ export class PlayersService {
   getPlayers(): Player[] {
     return [...this.players];
   }
+  
+  getPlayerById(id: number): Player | undefined {
+    return this.players.find(player => player.id === id);
+  }
 
   private createDefaultPlayers(): Player[] {
     const defaultPlayerData = [

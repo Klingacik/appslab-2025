@@ -1,6 +1,4 @@
-<div matListItemTitle>{{ player().nickname }}
-    <span>({{ player().xp }} XP)</span>
-    @for (quest of player().quests; track $index) {
-        <mat-list-item>{{quest.title}}</mat-list-item>
-    }
-</div>
+<mat-list-item [routerLink]="['/players', player().id]">
+    <div matListItemTitle>{{ player().nickname }}
+    </div>
+</mat-list-item>

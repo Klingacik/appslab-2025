@@ -1,0 +1,8 @@
+@if (player) {
+    <h2>{{ player.nickname }}</h2>
+    <h4>Current XP: {{ player.xp }}</h4>
+    <h4>Current quests:</h4>
+    @for (quest of player.quests; track $index) {
+        <mat-list-item [routerLink]="['/quests', quest.id]">{{quest.title}}</mat-list-item>
+    }
+}
