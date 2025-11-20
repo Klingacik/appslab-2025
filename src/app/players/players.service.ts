@@ -12,27 +12,28 @@ export class PlayersService {
   private readonly players: Player[];
 
   constructor() {
-    this.availableQuests = this.questsService.getQuests();
+    this.availableQuests = this.questsService.questList();
     this.players = this.createDefaultPlayers();
   }
 
   getPlayers(): Player[] {
     return [...this.players];
   }
-  
+
   getPlayerById(id: number): Player | undefined {
     return this.players.find(player => player.id === id);
   }
 
   private createDefaultPlayers(): Player[] {
     const defaultPlayerData = [
-      { id: 1, nickname: 'Klingacik', xp: 500 },
-      { id: 2, nickname: 'SideEffectss', xp: 200 }
+      { id: 1, nickname: 'Klingacik' },
+      { id: 2, nickname: 'SideEffectss' }
     ];
 
     return defaultPlayerData.map(playerData => ({
       ...playerData,
-      quests: [this.getRandomQuest()]
+      assignedQuests: [this.getRandomQuest()],
+      completedQuests: [this.getRandomQuest()]
     }));
   }
 
@@ -40,7 +41,7 @@ export class PlayersService {
     if (this.availableQuests.length === 0) {
       throw new Error('No quests available to assign');
     }
-    
+
     const randomIndex = Math.floor(Math.random() * this.availableQuests.length);
     return { ...this.availableQuests[randomIndex] };
   }

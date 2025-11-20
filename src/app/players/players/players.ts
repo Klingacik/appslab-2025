@@ -1,9 +1,9 @@
+import {MatList} from '@angular/material/list';
+import {PlayerItem} from '../player-item/player-item';
 import {Component, computed, inject, signal} from '@angular/core';
-import { PlayersService } from './players.service';
-import { Player } from './player';
-import { MatList } from '@angular/material/list';
-import { PlayerItem } from "./player-item/player-item";
-import {Search} from '../search/search';
+import {Search} from '../../search/search';
+import {PlayersService} from '../players.service';
+import {Player} from '../player';
 
 @Component({
   selector: 'app-players',

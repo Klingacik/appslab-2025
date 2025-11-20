@@ -12,6 +12,8 @@ header {
 
 .content {
   padding: var(--content-padding);
+  margin: auto;
+  width: 50%;
 }
 
 .nav-container {

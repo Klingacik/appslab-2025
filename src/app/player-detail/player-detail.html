@@ -1,8 +1,26 @@
-@if (player) {
-    <h2>{{ player.nickname }}</h2>
-    <h4>Current XP: {{ player.xp }}</h4>
-    <h4>Current quests:</h4>
-    @for (quest of player.quests; track $index) {
-        <mat-list-item [routerLink]="['/quests', quest.id]">{{quest.title}}</mat-list-item>
-    }
+@if (player(); as player) {
+  <h1>{{ player.nickname }}</h1>
+  <p><strong>Total xp:</strong> {{ playerTotalXp() }}</p>
+  <p><strong>Current level:</strong> {{ playerLevel().title }}</p>
+  <p><strong>Next level progress</strong></p>
+  <div class="next-level-progress">
+    <span>{{ percentageToNextLevel() | number:'1.0-0' }}%</span>
+    <mat-progress-bar mode="determinate" [value]="percentageToNextLevel()"></mat-progress-bar>
+  </div>
+  <h2>Assigned quests:</h2>
+  <app-quest-list [quests]="player.assignedQuests" [actionTemplate]="moveToDoneButtonTemplate"></app-quest-list>
+
+  <h2>Completed quests:</h2>
+  <app-quest-list [quests]="player.completedQuests" [actionTemplate]="moveToAssignedTemplate"></app-quest-list>
+
+
+  <ng-template #moveToDoneButtonTemplate let-quest>
+    <button matButton="filled" (click)="moveToDone(quest.id)" aria-label="Complete quest">Complete quest</button>
+  </ng-template>
+
+  <ng-template #moveToAssignedTemplate let-quest>
+    <button matButton="filled" (click)="moveToAssigned(quest.id)" aria-label="Mark as incomplete">Mark as incomplete</button>
+  </ng-template>
 }
+
+

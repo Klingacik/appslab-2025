@@ -1,4 +1,4 @@
-<h3>List of players</h3>
+<h1>List of players</h1>
 <app-search [(searchValue)]="searchValue"></app-search>
 <mat-list role="list">
     @for (player of filteredPlayersSignal(); track player.id; let i = $index) {

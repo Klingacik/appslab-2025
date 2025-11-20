@@ -1,18 +1,16 @@
 <mat-list-item [routerLink]="['/quests', quest().id]">
-  <div matListItemTitle>{{ questIndex()+1 }}.{{ quest().title }}
+  <div matListItemTitle>{{ questIndex() + 1 }}.{{ quest().title }}
     @if (quest().xp > 50 && quest().xp <= 100) {
       <span matBadge="SUPER XP!" matBadgeOverlap="false"></span>
-      } @else if (quest().xp > 100) {
+    } @else if (quest().xp > 100) {
       <span matBadge="MEGA XP!" matBadgeOverlap="false"></span>
-      }
+    }
   </div>
   <span matListItemLine>
     {{ quest().description }}
-    <button (click)="removeQuest()" mat-icon-button aria-label="Remove quest">
-      <mat-icon>delete</mat-icon>
-    </button>
   </span>
   <span matListItemLine>
     Experience: {{ quest().xp }}
   </span>
 </mat-list-item>
+<ng-content></ng-content>

@@ -1,8 +1,9 @@
-<h3>{{ questCountLabel}}: {{ count() }}</h3>
-<mat-list role="list">
-  @for (quest of quests(); track quest.id; let i = $index) {
-    <app-quest-item [quest]="quest" [questIndex]="i" (onRemoveQuest)="removeQuest($event)"></app-quest-item>
-  }
-</mat-list>
+<app-quest-list [quests]="quests()" [actionTemplate]="itemActions"></app-quest-list>
+
+<ng-template #itemActions let-quest>
+  <button (click)="removeQuest(quest.id)" mat-icon-button aria-label="Remove quest">
+    <mat-icon>delete</mat-icon>
+  </button>
+</ng-template>
 
 <button (click)="addQuest()" matButton="elevated">Add new quest</button>
