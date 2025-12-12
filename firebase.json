@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/quest-overflow/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
